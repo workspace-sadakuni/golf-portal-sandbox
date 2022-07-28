@@ -17,3 +17,7 @@ body {
 .text-blue {
   color: green;
 }
+
+.score-input {
+  width: 30px;
+}
