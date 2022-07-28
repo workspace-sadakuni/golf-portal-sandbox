@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue.js 3</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="app">
+    <h2><span class="text-blue" v-bind:class="{ large : isLarge, 'text-font-weight' : textFontWeight }">Golf</span> portal<img src="img/golf_icon.jpg" alt="" style="height: 40px;"></h2>
+
+    <section>
+      <h3>■Count Score</h3>
+      <button-counter></button-counter>
+    </section>
+
+    <section>
+      <h3>■Score Board</h3>
+      <table border="3" bordercolor="green" height="120">
+        <tr align="center">
+          <th>1H</th>
+          <th>2H</th>
+          <th>3H</th>
+          <th>4H</th>
+          <th>5H</th>
+          <th>6H</th>
+          <th>7H</th>
+          <th>8H</th>
+          <th>9H</th>
+        </tr>
+        <tr align="center">
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score1']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score2']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score3']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score4']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score5']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score6']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score7']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score8']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score9']"></td>
+        </tr>
+      </table>
+
+      <table border="3" bordercolor="green" height="120">
+        <tr align="center">
+          <th>10H</th>
+          <th>11H</th>
+          <th>12H</th>
+          <th>13H</th>
+          <th>14H</th>
+          <th>15H</th>
+          <th>16H</th>
+          <th>17H</th>
+          <th>18H</th>
+        </tr>
+        <tr align="center">
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score10']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score11']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score12']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score13']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score14']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score15']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score16']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score17']"></td>
+          <td><input type="number" style="width: 30px;" v-model="scoreList['score18']"></td>
+        </tr>
+      </table>
+
+      <br>
+      <table border="3" bordercolor="green" height="40">
+        <tr align="center">
+          <th>Score Sum</th>
+        </tr>
+        <tr align="center">
+          <td>{{ sumScore }}</td>
+        </tr>
+      </table>
+    </section>
+    
+    <section>
+      <h3>■Search GolfPlaces by Keyword</h3>
+      <p><input type="text" v-model="golfsKeyword"></p>
+      <p>{{ searchGolfMessage }}</p>
+      <ul>
+        <li v-for="golf in golfs">
+          <a v-bind:href="golf['Item']['golfCourseDetailUrl']" target="_blank">{{ golf["Item"]["golfCourseName"] }}</a>
+          <br>{{ golf["Item"]["address"] }}<br>
+          <img v-bind:src="golf['Item']['golfCourseImageUrl']" alt="">
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script src="https://unpkg.com/vue@3.1.5"></script>
+  <script src="https://unpkg.com/axios@0.21.1/dist/axios.js"></script> <!-- HTTPクライアントaxios読み込み -->
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.js"></script> <!-- ユーティリティライブラリlodash読み込み -->
+  <script src="js/env.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
